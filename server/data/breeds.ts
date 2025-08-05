@@ -266,6 +266,696 @@ export const breedsWithIds: Breed[] = [
     imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/03/Ixworth-cut-out.jpg",
     isExotic: false
   },
+
+  {
+    id: "wyandotte",
+    name: "Wyandotte",
+    category: "dual",
+    origin: "North America",
+    description: "Dual-purpose breed with rose comb and laced plumage patterns. Excellent egg layers with calm temperament and cold hardiness.",
+    conservationStatus: "common",
+    physicalTraits: {
+      featherColor: "Multiple varieties (Silver Laced, Gold Laced, White, Blue Laced, Buff Laced)",
+      combType: "rose",
+      bodySize: "large",
+      legColor: "Yellow",
+      skinColor: "Yellow",
+      eggColor: "Brown",
+      pattern: "Laced"
+    },
+    productionTraits: {
+      eggProductionMin: 200,
+      eggProductionMax: 240,
+      eggSizeOz: 2.1,
+      meatWeight: 6.5,
+      feedConversion: 2.2,
+      broodiness: "moderate",
+      maturityWeeks: 20
+    },
+    behaviorTraits: {
+      temperament: "calm",
+      coldHardiness: 5,
+      heatTolerance: 3,
+      foraging: "good",
+      confinementTolerance: "excellent",
+      diseaseResistance: 4
+    },
+    geneticTraits: [
+      { gene: "R", allele1: "R", allele2: "R", dominance: "dominant", expression: "Rose comb" },
+      { gene: "S", allele1: "S", allele2: "S", dominance: "dominant", expression: "Silver based plumage" },
+      { gene: "Ml", allele1: "Ml", allele2: "Ml", dominance: "dominant", expression: "Melanotic lacing" }
+    ],
+    pricing: {
+      dayOldChickMin: 3,
+      dayOldChickMax: 5,
+      startedPulletMin: 20,
+      startedPulletMax: 30,
+      breedingQualityMin: 35,
+      breedingQualityMax: 55,
+      showQualityMin: 65,
+      showQualityMax: 130,
+      rarityPremium: 1.0
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/03/Silver-Laced-Wyandottes_1284x700.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "silkie",
+    name: "Silkie",
+    category: "ornamental",
+    origin: "Asia",
+    description: "Unique ornamental breed with fluffy fur-like plumage, black skin, and five toes. Excellent broody mothers with docile temperament.",
+    conservationStatus: "common",
+    physicalTraits: {
+      featherColor: "White, Black, Blue, Partridge, Gold",
+      combType: "walnut",
+      bodySize: "bantam",
+      legColor: "Dark slate",
+      skinColor: "Black",
+      eggColor: "Cream",
+      pattern: "Solid"
+    },
+    productionTraits: {
+      eggProductionMin: 80,
+      eggProductionMax: 120,
+      eggSizeOz: 1.5,
+      meatWeight: 2.5,
+      feedConversion: 3.5,
+      broodiness: "very high",
+      maturityWeeks: 24
+    },
+    behaviorTraits: {
+      temperament: "docile",
+      coldHardiness: 2,
+      heatTolerance: 3,
+      foraging: "poor",
+      confinementTolerance: "excellent",
+      diseaseResistance: 2
+    },
+    geneticTraits: [
+      { gene: "h", allele1: "h", allele2: "h", dominance: "recessive", expression: "Silkie feathering" },
+      { gene: "Po", allele1: "Po", allele2: "Po", dominance: "dominant", expression: "Polydactyly (5 toes)" },
+      { gene: "id", allele1: "id", allele2: "id", dominance: "recessive", expression: "Melanotic skin" }
+    ],
+    pricing: {
+      dayOldChickMin: 5,
+      dayOldChickMax: 8,
+      startedPulletMin: 25,
+      startedPulletMax: 40,
+      breedingQualityMin: 50,
+      breedingQualityMax: 80,
+      showQualityMin: 100,
+      showQualityMax: 200,
+      rarityPremium: 1.3
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/01/Silkie-Chickens-Bearded_1200x750-1.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "sebright",
+    name: "Sebright",
+    category: "ornamental",
+    origin: "England",
+    description: "True bantam breed with perfectly laced plumage and hen-feathered males. Created by Sir John Sebright in early 19th century.",
+    conservationStatus: "watch",
+    physicalTraits: {
+      featherColor: "Gold Laced, Silver Laced",
+      combType: "rose",
+      bodySize: "bantam",
+      legColor: "Slate blue",
+      skinColor: "White",
+      eggColor: "White",
+      pattern: "Laced"
+    },
+    productionTraits: {
+      eggProductionMin: 50,
+      eggProductionMax: 80,
+      eggSizeOz: 1.2,
+      meatWeight: 1.2,
+      feedConversion: 4.0,
+      broodiness: "low",
+      maturityWeeks: 20
+    },
+    behaviorTraits: {
+      temperament: "active",
+      coldHardiness: 3,
+      heatTolerance: 3,
+      foraging: "good",
+      confinementTolerance: "good",
+      diseaseResistance: 1
+    },
+    geneticTraits: [
+      { gene: "Hf", allele1: "hf", allele2: "hf", dominance: "recessive", expression: "Hen feathering in males" },
+      { gene: "Ml", allele1: "Ml", allele2: "Ml", dominance: "dominant", expression: "Melanotic lacing" },
+      { gene: "R", allele1: "R", allele2: "R", dominance: "dominant", expression: "Rose comb" }
+    ],
+    pricing: {
+      dayOldChickMin: 8,
+      dayOldChickMax: 12,
+      startedPulletMin: 40,
+      startedPulletMax: 60,
+      breedingQualityMin: 70,
+      breedingQualityMax: 100,
+      showQualityMin: 120,
+      showQualityMax: 250,
+      rarityPremium: 2.0
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2020/05/Sebright-Silver-cut-out-flipped_200W.png",
+    isExotic: false
+  },
+
+  {
+    id: "la-fleche",
+    name: "La Flèche",
+    category: "meat",
+    origin: "France",
+    description: "Rare French breed with distinctive devil's horn comb. Originally bred for tender white meat for Parisian markets.",
+    conservationStatus: "critical",
+    physicalTraits: {
+      featherColor: "Glossy black with green reflections",
+      combType: "v-shaped",
+      bodySize: "large",
+      legColor: "Dark slate",
+      skinColor: "White",
+      eggColor: "Tinted",
+      pattern: "Solid"
+    },
+    productionTraits: {
+      eggProductionMin: 150,
+      eggProductionMax: 180,
+      eggSizeOz: 2.0,
+      meatWeight: 8,
+      feedConversion: 2.8,
+      broodiness: "moderate",
+      maturityWeeks: 40
+    },
+    behaviorTraits: {
+      temperament: "active",
+      coldHardiness: 3,
+      heatTolerance: 3,
+      foraging: "excellent",
+      confinementTolerance: "good",
+      diseaseResistance: 3
+    },
+    geneticTraits: [
+      { gene: "E", allele1: "E", allele2: "E", dominance: "dominant", expression: "Extended black" },
+      { gene: "V", allele1: "V", allele2: "V", dominance: "dominant", expression: "V-shaped comb" },
+      { gene: "Y", allele1: "y", allele2: "y", dominance: "recessive", expression: "White skin" }
+    ],
+    pricing: {
+      dayOldChickMin: 12,
+      dayOldChickMax: 18,
+      startedPulletMin: 60,
+      startedPulletMax: 90,
+      breedingQualityMin: 100,
+      breedingQualityMax: 150,
+      showQualityMin: 180,
+      showQualityMax: 300,
+      rarityPremium: 3.0
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/04/La-Fleche-cut-out.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "norfolk-grey",
+    name: "Norfolk Grey",
+    category: "dual",
+    origin: "Norwich, UK",
+    description: "Rare British breed created by Fred Myhill. Black plumage with silver hackles, excellent forager and good egg layer.",
+    conservationStatus: "critical",
+    physicalTraits: {
+      featherColor: "Black with silver white hackles",
+      combType: "single",
+      bodySize: "medium",
+      legColor: "Dark slate",
+      skinColor: "White",
+      eggColor: "Tinted",
+      pattern: "Hackled"
+    },
+    productionTraits: {
+      eggProductionMin: 150,
+      eggProductionMax: 220,
+      eggSizeOz: 2.1,
+      meatWeight: 6,
+      feedConversion: 2.3,
+      broodiness: "low",
+      maturityWeeks: 22
+    },
+    behaviorTraits: {
+      temperament: "active",
+      coldHardiness: 4,
+      heatTolerance: 3,
+      foraging: "excellent",
+      confinementTolerance: "good",
+      diseaseResistance: 4
+    },
+    geneticTraits: [
+      { gene: "E", allele1: "E", allele2: "E", dominance: "dominant", expression: "Extended black" },
+      { gene: "S", allele1: "S", allele2: "S", dominance: "dominant", expression: "Silver hackles" },
+      { gene: "R", allele1: "r", allele2: "r", dominance: "recessive", expression: "Single comb" }
+    ],
+    pricing: {
+      dayOldChickMin: 15,
+      dayOldChickMax: 20,
+      startedPulletMin: 70,
+      startedPulletMax: 100,
+      breedingQualityMin: 120,
+      breedingQualityMax: 180,
+      showQualityMin: 200,
+      showQualityMax: 350,
+      rarityPremium: 3.5
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/04/Norfolk-Grey-cut-out.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "orpington",
+    name: "Orpington",
+    category: "dual",
+    origin: "England",
+    description: "Created by William Cook, impressive dual-purpose breed with abundant feathers. Available in multiple colors with excellent type and good egg production.",
+    conservationStatus: "common",
+    physicalTraits: {
+      featherColor: "Black, Buff, Blue, White, Jubilee, Chocolate",
+      combType: "single",
+      bodySize: "large",
+      legColor: "White",
+      skinColor: "White",
+      eggColor: "Brown",
+      pattern: "Solid"
+    },
+    productionTraits: {
+      eggProductionMin: 180,
+      eggProductionMax: 220,
+      eggSizeOz: 2.2,
+      meatWeight: 8,
+      feedConversion: 2.4,
+      broodiness: "moderate",
+      maturityWeeks: 22
+    },
+    behaviorTraits: {
+      temperament: "docile",
+      coldHardiness: 4,
+      heatTolerance: 3,
+      foraging: "good",
+      confinementTolerance: "excellent",
+      diseaseResistance: 4
+    },
+    geneticTraits: [
+      { gene: "E", allele1: "E", allele2: "e", dominance: "dominant", expression: "Extended black in Black variety" },
+      { gene: "Co", allele1: "co", allele2: "co", dominance: "recessive", expression: "Columbian restriction in Light varieties" },
+      { gene: "bl", allele1: "Bl", allele2: "bl", dominance: "incomplete", expression: "Blue dilution" }
+    ],
+    pricing: {
+      dayOldChickMin: 4,
+      dayOldChickMax: 7,
+      startedPulletMin: 25,
+      startedPulletMax: 35,
+      breedingQualityMin: 40,
+      breedingQualityMax: 70,
+      showQualityMin: 80,
+      showQualityMax: 150,
+      rarityPremium: 1.2
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/03/David-Pownalls-Buff-Orpington-Chickens_1284x780.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "leghorn",
+    name: "Leghorn",
+    category: "egg",
+    origin: "Italy",
+    description: "Prolific egg layer from Italy, refined in America. Hardy, early maturing birds that rarely go broody. Available in many color varieties.",
+    conservationStatus: "common",
+    physicalTraits: {
+      featherColor: "White, Black, Blue, Brown, Buff, Cuckoo, Golden Duckwing, Silver Duckwing, Exchequer, Partridge",
+      combType: "single",
+      bodySize: "medium",
+      legColor: "Yellow",
+      skinColor: "Yellow",
+      eggColor: "White",
+      pattern: "Multiple"
+    },
+    productionTraits: {
+      eggProductionMin: 180,
+      eggProductionMax: 280,
+      eggSizeOz: 2.0,
+      meatWeight: 5,
+      feedConversion: 1.8,
+      broodiness: "very low",
+      maturityWeeks: 16
+    },
+    behaviorTraits: {
+      temperament: "active",
+      coldHardiness: 3,
+      heatTolerance: 4,
+      foraging: "excellent",
+      confinementTolerance: "good",
+      diseaseResistance: 4
+    },
+    geneticTraits: [
+      { gene: "C", allele1: "C", allele2: "C", dominance: "dominant", expression: "Full color" },
+      { gene: "I", allele1: "I", allele2: "I", dominance: "dominant", expression: "Dominant white in White variety" },
+      { gene: "R", allele1: "r", allele2: "r", dominance: "recessive", expression: "Single comb" }
+    ],
+    pricing: {
+      dayOldChickMin: 2,
+      dayOldChickMax: 4,
+      startedPulletMin: 15,
+      startedPulletMax: 25,
+      breedingQualityMin: 25,
+      breedingQualityMax: 45,
+      showQualityMin: 50,
+      showQualityMax: 100,
+      rarityPremium: 1.0
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/03/white-leghorn-cut-out.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "dorking",
+    name: "Dorking",
+    category: "meat",
+    origin: "England",
+    description: "One of oldest English breeds with distinctive fifth toe. Produces fine white meat, calm and docile nature. Historic table bird with Roman origins.",
+    conservationStatus: "critical",
+    physicalTraits: {
+      featherColor: "Cuckoo, Dark Red, Silver Grey, White",
+      combType: "single",
+      bodySize: "large",
+      legColor: "White",
+      skinColor: "White",
+      eggColor: "White",
+      pattern: "Multiple"
+    },
+    productionTraits: {
+      eggProductionMin: 120,
+      eggProductionMax: 170,
+      eggSizeOz: 2.1,
+      meatWeight: 10,
+      feedConversion: 3.0,
+      broodiness: "high",
+      maturityWeeks: 28
+    },
+    behaviorTraits: {
+      temperament: "docile",
+      coldHardiness: 3,
+      heatTolerance: 3,
+      foraging: "good",
+      confinementTolerance: "excellent",
+      diseaseResistance: 3
+    },
+    geneticTraits: [
+      { gene: "Po", allele1: "Po", allele2: "Po", dominance: "dominant", expression: "Polydactyly (5 toes)" },
+      { gene: "E", allele1: "e", allele2: "e", dominance: "recessive", expression: "Red/wheaten base color" },
+      { gene: "S", allele1: "S", allele2: "s", dominance: "dominant", expression: "Silver in Silver Grey variety" }
+    ],
+    pricing: {
+      dayOldChickMin: 10,
+      dayOldChickMax: 15,
+      startedPulletMin: 50,
+      startedPulletMax: 75,
+      breedingQualityMin: 80,
+      breedingQualityMax: 120,
+      showQualityMin: 150,
+      showQualityMax: 250,
+      rarityPremium: 2.5
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/03/Dorking-cut-out.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "sussex",
+    name: "Sussex",
+    category: "dual",
+    origin: "England",
+    description: "Versatile dual-purpose breed, hardy and good for beginners. Available in eight standardized colors. Rarely broody with good egg production.",
+    conservationStatus: "common",
+    physicalTraits: {
+      featherColor: "Light, Speckled, Red, Buff, Brown, White, Silver, Coronation",
+      combType: "single",
+      bodySize: "large",
+      legColor: "White",
+      skinColor: "White",
+      eggColor: "Cream",
+      pattern: "Multiple"
+    },
+    productionTraits: {
+      eggProductionMin: 180,
+      eggProductionMax: 210,
+      eggSizeOz: 2.0,
+      meatWeight: 7,
+      feedConversion: 2.3,
+      broodiness: "low",
+      maturityWeeks: 20
+    },
+    behaviorTraits: {
+      temperament: "docile",
+      coldHardiness: 4,
+      heatTolerance: 3,
+      foraging: "excellent",
+      confinementTolerance: "excellent",
+      diseaseResistance: 4
+    },
+    geneticTraits: [
+      { gene: "Co", allele1: "Co", allele2: "co", dominance: "dominant", expression: "Columbian restriction in Light Sussex" },
+      { gene: "S", allele1: "S", allele2: "S", dominance: "dominant", expression: "Silver based plumage" },
+      { gene: "Sp", allele1: "sp", allele2: "sp", dominance: "recessive", expression: "Speckled pattern" }
+    ],
+    pricing: {
+      dayOldChickMin: 3,
+      dayOldChickMax: 6,
+      startedPulletMin: 20,
+      startedPulletMax: 30,
+      breedingQualityMin: 35,
+      breedingQualityMax: 55,
+      showQualityMin: 60,
+      showQualityMax: 120,
+      rarityPremium: 1.0
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/04/Sussex-cut-out.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "marans",
+    name: "Marans",
+    category: "dual",
+    origin: "Marans, France",
+    description: "French breed famous for dark brown eggs. Multiple varieties including Cuckoo, Black, and Copper Black. Hardy dual-purpose birds.",
+    conservationStatus: "common",
+    physicalTraits: {
+      featherColor: "Black, Dark Cuckoo, Golden Cuckoo, Silver Cuckoo, Copper Black, Wheaten, White",
+      combType: "single",
+      bodySize: "medium",
+      legColor: "White",
+      skinColor: "White",
+      eggColor: "Dark Brown",
+      pattern: "Multiple"
+    },
+    productionTraits: {
+      eggProductionMin: 160,
+      eggProductionMax: 210,
+      eggSizeOz: 2.0,
+      meatWeight: 6.5,
+      feedConversion: 2.4,
+      broodiness: "moderate",
+      maturityWeeks: 22
+    },
+    behaviorTraits: {
+      temperament: "calm",
+      coldHardiness: 4,
+      heatTolerance: 3,
+      foraging: "excellent",
+      confinementTolerance: "good",
+      diseaseResistance: 4
+    },
+    geneticTraits: [
+      { gene: "O", allele1: "O", allele2: "O", dominance: "dominant", expression: "Dark brown egg shell" },
+      { gene: "B", allele1: "B", allele2: "b", dominance: "dominant", expression: "Barring in Cuckoo varieties" },
+      { gene: "E", allele1: "e+", allele2: "e+", dominance: "recessive", expression: "Wheaten base color" }
+    ],
+    pricing: {
+      dayOldChickMin: 4,
+      dayOldChickMax: 8,
+      startedPulletMin: 25,
+      startedPulletMax: 40,
+      breedingQualityMin: 40,
+      breedingQualityMax: 70,
+      showQualityMin: 75,
+      showQualityMax: 140,
+      rarityPremium: 1.3
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/03/Marans-cut-out.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "brahma",
+    name: "Brahma",
+    category: "ornamental",
+    origin: "China",
+    description: "Large ornamental breed with feathered feet and pea comb. Available in multiple color varieties. Impressive exhibition birds with gentle nature.",
+    conservationStatus: "common",
+    physicalTraits: {
+      featherColor: "Light, Dark, Buff Columbian, White, Gold, Blue Partridge",
+      combType: "pea",
+      bodySize: "large",
+      legColor: "Yellow",
+      skinColor: "Yellow",
+      eggColor: "Brown",
+      pattern: "Multiple"
+    },
+    productionTraits: {
+      eggProductionMin: 120,
+      eggProductionMax: 180,
+      eggSizeOz: 2.0,
+      meatWeight: 9,
+      feedConversion: 2.8,
+      broodiness: "high",
+      maturityWeeks: 26
+    },
+    behaviorTraits: {
+      temperament: "docile",
+      coldHardiness: 4,
+      heatTolerance: 2,
+      foraging: "poor",
+      confinementTolerance: "excellent",
+      diseaseResistance: 3
+    },
+    geneticTraits: [
+      { gene: "P", allele1: "P", allele2: "P", dominance: "dominant", expression: "Pea comb" },
+      { gene: "Pti", allele1: "Pti", allele2: "Pti", dominance: "dominant", expression: "Feathered shanks" },
+      { gene: "Co", allele1: "Co", allele2: "co", dominance: "dominant", expression: "Columbian restriction" }
+    ],
+    pricing: {
+      dayOldChickMin: 6,
+      dayOldChickMax: 10,
+      startedPulletMin: 35,
+      startedPulletMax: 50,
+      breedingQualityMin: 60,
+      breedingQualityMax: 90,
+      showQualityMin: 100,
+      showQualityMax: 180,
+      rarityPremium: 1.4
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/03/Brahma-cut-out.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "minorca",
+    name: "Minorca",
+    category: "egg",
+    origin: "Mediterranean",
+    description: "Excellent layer of large white eggs from island of Menorca. Hardy, active forager that rarely goes broody. Largest of Mediterranean class.",
+    conservationStatus: "common",
+    physicalTraits: {
+      featherColor: "Black, Blue, White",
+      combType: "single",
+      bodySize: "large",
+      legColor: "White",
+      skinColor: "White",
+      eggColor: "White",
+      pattern: "Solid"
+    },
+    productionTraits: {
+      eggProductionMin: 170,
+      eggProductionMax: 220,
+      eggSizeOz: 2.3,
+      meatWeight: 6,
+      feedConversion: 2.0,
+      broodiness: "very low",
+      maturityWeeks: 18
+    },
+    behaviorTraits: {
+      temperament: "active",
+      coldHardiness: 3,
+      heatTolerance: 4,
+      foraging: "excellent",
+      confinementTolerance: "good",
+      diseaseResistance: 4
+    },
+    geneticTraits: [
+      { gene: "R", allele1: "r", allele2: "r", dominance: "recessive", expression: "Single comb" },
+      { gene: "E", allele1: "E", allele2: "E", dominance: "dominant", expression: "Extended black" },
+      { gene: "C", allele1: "C", allele2: "C", dominance: "dominant", expression: "Full color" }
+    ],
+    pricing: {
+      dayOldChickMin: 3,
+      dayOldChickMax: 6,
+      startedPulletMin: 18,
+      startedPulletMax: 28,
+      breedingQualityMin: 30,
+      breedingQualityMax: 50,
+      showQualityMin: 55,
+      showQualityMax: 110,
+      rarityPremium: 1.1
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/03/Minorca-Bantam-cut-out.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "ancona",
+    name: "Ancona",
+    category: "egg",
+    origin: "Ancona, Italy",
+    description: "Beautiful mottled breed with precise white spangles on beetle-green black feathers. Excellent layer, hardy and active forager. Related to Leghorn.",
+    conservationStatus: "watch",
+    physicalTraits: {
+      featherColor: "Black mottled with white spangles",
+      combType: "single",
+      bodySize: "medium",
+      legColor: "Yellow",
+      skinColor: "Yellow",
+      eggColor: "White",
+      pattern: "Mottled"
+    },
+    productionTraits: {
+      eggProductionMin: 180,
+      eggProductionMax: 220,
+      eggSizeOz: 2.0,
+      meatWeight: 5.5,
+      feedConversion: 1.9,
+      broodiness: "very low",
+      maturityWeeks: 18
+    },
+    behaviorTraits: {
+      temperament: "active",
+      coldHardiness: 3,
+      heatTolerance: 4,
+      foraging: "excellent",
+      confinementTolerance: "good",
+      diseaseResistance: 4
+    },
+    geneticTraits: [
+      { gene: "Mo", allele1: "Mo", allele2: "mo", dominance: "dominant", expression: "Mottling pattern" },
+      { gene: "E", allele1: "E", allele2: "E", dominance: "dominant", expression: "Extended black base" },
+      { gene: "R", allele1: "r", allele2: "r", dominance: "recessive", expression: "Single comb" }
+    ],
+    pricing: {
+      dayOldChickMin: 6,
+      dayOldChickMax: 10,
+      startedPulletMin: 30,
+      startedPulletMax: 45,
+      breedingQualityMin: 50,
+      breedingQualityMax: 75,
+      showQualityMin: 85,
+      showQualityMax: 150,
+      rarityPremium: 1.6
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/01/Ancona-head-cut-out.jpg",
+    isExotic: false
+  },
+
   {
     id: "australorp",
     name: "Australorp",
@@ -898,6 +1588,165 @@ export const breedsWithIds: Breed[] = [
       rarityPremium: 2.5
     },
     imageUrl: "/api/breeds/polish/image",
+    isExotic: false
+  },
+
+  {
+    id: "new-hampshire-red",
+    name: "New Hampshire Red",
+    category: "dual",
+    origin: "New Hampshire, U.S.",
+    description: "Fast-maturing dual-purpose breed developed from Rhode Island Red. Selected for broiler industry with good hatchability and feed conversion.",
+    conservationStatus: "common",
+    physicalTraits: {
+      featherColor: "Red with black tail feathers",
+      combType: "single",
+      bodySize: "large",
+      legColor: "Yellow",
+      skinColor: "Yellow",
+      eggColor: "Brown",
+      pattern: "Red with black highlights"
+    },
+    productionTraits: {
+      eggProductionMin: 160,
+      eggProductionMax: 240,
+      eggSizeOz: 2.1,
+      meatWeight: 7.5,
+      feedConversion: 2.2,
+      broodiness: "low",
+      maturityWeeks: 20
+    },
+    behaviorTraits: {
+      temperament: "active",
+      coldHardiness: 4,
+      heatTolerance: 4,
+      foraging: "excellent",
+      confinementTolerance: "good",
+      diseaseResistance: 4
+    },
+    geneticTraits: [
+      { gene: "e+", allele1: "e+", allele2: "e+", dominance: "recessive", expression: "Red base color" },
+      { gene: "R", allele1: "r", allele2: "r", dominance: "recessive", expression: "Single comb" },
+      { gene: "Y", allele1: "Y", allele2: "Y", dominance: "dominant", expression: "Yellow skin and legs" }
+    ],
+    pricing: {
+      dayOldChickMin: 4,
+      dayOldChickMax: 6,
+      startedPulletMin: 28,
+      startedPulletMax: 38,
+      breedingQualityMin: 45,
+      breedingQualityMax: 70,
+      showQualityMin: 80,
+      showQualityMax: 140,
+      rarityPremium: 1.1
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/04/New-Hampshire-Red-cut-out.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "welsummer",
+    name: "Welsummer",
+    category: "dual",
+    origin: "Welsum, Holland",
+    description: "Dutch breed selected for large dark brown eggs. Red-partridge coloring with excellent dual-purpose qualities and rarely goes broody.",
+    conservationStatus: "common",
+    physicalTraits: {
+      featherColor: "Red-Partridge, Silver Duckwing",
+      combType: "single",
+      bodySize: "large",
+      legColor: "Yellow",
+      skinColor: "Yellow",
+      eggColor: "Dark red-brown",
+      pattern: "Partridge"
+    },
+    productionTraits: {
+      eggProductionMin: 200,
+      eggProductionMax: 250,
+      eggSizeOz: 2.2,
+      meatWeight: 6.5,
+      feedConversion: 2.3,
+      broodiness: "very low",
+      maturityWeeks: 21
+    },
+    behaviorTraits: {
+      temperament: "calm",
+      coldHardiness: 4,
+      heatTolerance: 3,
+      foraging: "excellent",
+      confinementTolerance: "good",
+      diseaseResistance: 4
+    },
+    geneticTraits: [
+      { gene: "e+", allele1: "e+", allele2: "e+", dominance: "recessive", expression: "Red partridge base" },
+      { gene: "R", allele1: "r", allele2: "r", dominance: "recessive", expression: "Single comb" },
+      { gene: "Pg", allele1: "Pg", allele2: "pg", dominance: "dominant", expression: "Partridge gene" }
+    ],
+    pricing: {
+      dayOldChickMin: 5,
+      dayOldChickMax: 8,
+      startedPulletMin: 30,
+      startedPulletMax: 45,
+      breedingQualityMin: 50,
+      breedingQualityMax: 80,
+      showQualityMin: 90,
+      showQualityMax: 160,
+      rarityPremium: 1.3
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/04/Welsummer-cut-out_8846.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "cochin",
+    name: "Cochin",
+    category: "ornamental",
+    origin: "China",
+    description: "Large ornamental breed with heavily feathered feet. Originally from Shanghai, docile and friendly but slow to mature. Good broody hens.",
+    conservationStatus: "common",
+    physicalTraits: {
+      featherColor: "Black, Blue, Buff, Cuckoo, Partridge, White",
+      combType: "single",
+      bodySize: "large",
+      legColor: "Heavily feathered, yellow",
+      skinColor: "Yellow",
+      eggColor: "Brown",
+      pattern: "Multiple"
+    },
+    productionTraits: {
+      eggProductionMin: 150,
+      eggProductionMax: 200,
+      eggSizeOz: 1.8,
+      meatWeight: 9.5,
+      feedConversion: 3.0,
+      broodiness: "high",
+      maturityWeeks: 28
+    },
+    behaviorTraits: {
+      temperament: "docile",
+      coldHardiness: 4,
+      heatTolerance: 2,
+      foraging: "poor",
+      confinementTolerance: "excellent",
+      diseaseResistance: 3
+    },
+    geneticTraits: [
+      { gene: "Pti", allele1: "Pti", allele2: "Pti", dominance: "recessive", expression: "Feathered shanks" },
+      { gene: "R", allele1: "r", allele2: "r", dominance: "recessive", expression: "Single comb" },
+      { gene: "Pattern", allele1: "var", allele2: "var", dominance: "codominant", expression: "Variable patterns" }
+    ],
+    pricing: {
+      dayOldChickMin: 6,
+      dayOldChickMax: 12,
+      startedPulletMin: 40,
+      startedPulletMax: 60,
+      breedingQualityMin: 60,
+      breedingQualityMax: 100,
+      showQualityMin: 120,
+      showQualityMax: 250,
+      rarityPremium: 1.5
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/03/Cochin-cut-out.jpg",
     isExotic: false
   }
 ];
