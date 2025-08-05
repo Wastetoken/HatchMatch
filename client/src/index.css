@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(110, 52%, 18%);
+  --primary-foreground: hsl(0, 0%, 98%);
+  --secondary: hsl(27, 69%, 27%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(16, 100%, 60%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --success: hsl(134, 61%, 41%);
+  --success-foreground: hsl(0, 0%, 98%);
+  --warning: hsl(45, 93%, 47%);
+  --warning-foreground: hsl(20, 14.3%, 4.1%);
+  --neutral: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(110, 52%, 18%);
+  --primary-foreground: hsl(0, 0%, 98%);
+  --secondary: hsl(27, 69%, 27%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(16, 100%, 60%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --success: hsl(134, 61%, 41%);
+  --success-foreground: hsl(0, 0%, 98%);
+  --warning: hsl(45, 93%, 47%);
+  --warning-foreground: hsl(20, 14.3%, 4.1%);
+  --neutral: hsl(240, 3.7%, 15.9%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .breed-card {
+    @apply bg-card border border-border rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer;
+  }
+  
+  .breed-card:hover {
+    @apply border-primary border-opacity-50;
+  }
+  
+  .trait-bar {
+    @apply w-full bg-muted rounded-full h-2;
+  }
+  
+  .trait-fill {
+    @apply h-2 rounded-full transition-all duration-300;
+  }
+  
+  .genetics-badge {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .genetics-dominant {
+    @apply bg-success/20 text-success;
+  }
+  
+  .genetics-recessive {
+    @apply bg-destructive/20 text-destructive;
+  }
+  
+  .genetics-codominant {
+    @apply bg-warning/20 text-warning;
+  }
+  
+  .pricing-tier {
+    @apply bg-muted rounded-lg p-3 space-y-2;
+  }
+  
+  .prediction-visual {
+    @apply relative bg-muted rounded-lg p-6 border-2 border-dashed border-border;
+  }
+  
+  .prediction-visual.active {
+    @apply border-accent border-solid bg-accent bg-opacity-5;
+  }
+  
+  .tab-content {
+    @apply animate-in fade-in-50 duration-300;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
