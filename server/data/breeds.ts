@@ -1,7 +1,271 @@
 import { Breed } from "@shared/schema";
 
-// Generate breeds with IDs from the database
+// Comprehensive chicken breed database based on real data from poultrykeeper.com and research
 export const breedsWithIds: Breed[] = [
+  {
+    id: "plymouth-rock",
+    name: "Plymouth Rock",
+    category: "dual",
+    origin: "America",
+    description: "Versatile utility breed known for barred pattern and excellent dual-purpose qualities. Used in commercial sex-linked hybrid crosses.",
+    conservationStatus: "common",
+    physicalTraits: {
+      featherColor: "Barred black and white",
+      combType: "single",
+      bodySize: "large",
+      legColor: "Yellow",
+      skinColor: "Yellow",
+      eggColor: "Brown",
+      pattern: "Barred"
+    },
+    productionTraits: {
+      eggProductionMin: 190,
+      eggProductionMax: 240,
+      eggSizeOz: 2.2,
+      meatWeight: 7.5,
+      feedConversion: 2.4,
+      broodiness: "moderate",
+      maturityWeeks: 20
+    },
+    behaviorTraits: {
+      temperament: "calm",
+      coldHardiness: 4,
+      heatTolerance: 3,
+      foraging: "good",
+      confinementTolerance: "excellent",
+      diseaseResistance: 4
+    },
+    geneticTraits: [
+      { gene: "B", allele1: "B", allele2: "b", dominance: "dominant", expression: "Barred pattern" },
+      { gene: "S", allele1: "s", allele2: "s", dominance: "recessive", expression: "Gold/red based plumage" },
+      { gene: "R", allele1: "r", allele2: "r", dominance: "recessive", expression: "Single comb" }
+    ],
+    pricing: {
+      dayOldChickMin: 2,
+      dayOldChickMax: 4,
+      startedPulletMin: 18,
+      startedPulletMax: 28,
+      breedingQualityMin: 35,
+      breedingQualityMax: 50,
+      showQualityMin: 60,
+      showQualityMax: 120,
+      rarityPremium: 1.0
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/03/Plymouth-Rock-Cut-Out.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "rhode-island-red",
+    name: "Rhode Island Red",
+    category: "layer",
+    origin: "Rhode Island, USA",
+    description: "Prolific brown egg layer with deep red plumage. Foundation breed for many commercial hybrid layers.",
+    conservationStatus: "common",
+    physicalTraits: {
+      featherColor: "Dark red mahogany",
+      combType: "single",
+      bodySize: "large",
+      legColor: "Yellow",
+      skinColor: "Yellow",
+      eggColor: "Light brown",
+      pattern: "Solid"
+    },
+    productionTraits: {
+      eggProductionMin: 250,
+      eggProductionMax: 300,
+      eggSizeOz: 2.3,
+      meatWeight: 6.5,
+      feedConversion: 2.1,
+      broodiness: "low",
+      maturityWeeks: 18
+    },
+    behaviorTraits: {
+      temperament: "active",
+      coldHardiness: 4,
+      heatTolerance: 3,
+      foraging: "excellent",
+      confinementTolerance: "good",
+      diseaseResistance: 4
+    },
+    geneticTraits: [
+      { gene: "S", allele1: "s", allele2: "s", dominance: "recessive", expression: "Gold/red based plumage" },
+      { gene: "R", allele1: "r", allele2: "r", dominance: "recessive", expression: "Single comb" },
+      { gene: "Y", allele1: "Y", allele2: "Y", dominance: "dominant", expression: "Yellow skin" }
+    ],
+    pricing: {
+      dayOldChickMin: 2,
+      dayOldChickMax: 4,
+      startedPulletMin: 15,
+      startedPulletMax: 25,
+      breedingQualityMin: 30,
+      breedingQualityMax: 45,
+      showQualityMin: 50,
+      showQualityMax: 100,
+      rarityPremium: 1.0
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/04/Rhode-Island-Red-chickens-cut-out.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "new-hampshire-red",
+    name: "New Hampshire Red",
+    category: "dual",
+    origin: "New Hampshire, USA",
+    description: "Fast-maturing utility breed developed from Rhode Island Reds. Selected for improved meat production and faster feathering.",
+    conservationStatus: "uncommon",
+    physicalTraits: {
+      featherColor: "Medium red",
+      combType: "single",
+      bodySize: "large",
+      legColor: "Yellow",
+      skinColor: "Yellow",
+      eggColor: "Brown",
+      pattern: "Solid"
+    },
+    productionTraits: {
+      eggProductionMin: 160,
+      eggProductionMax: 240,
+      eggSizeOz: 2.2,
+      meatWeight: 8.5,
+      feedConversion: 2.3,
+      broodiness: "moderate",
+      maturityWeeks: 16
+    },
+    behaviorTraits: {
+      temperament: "active",
+      coldHardiness: 4,
+      heatTolerance: 3,
+      foraging: "good",
+      confinementTolerance: "good",
+      diseaseResistance: 4
+    },
+    geneticTraits: [
+      { gene: "S", allele1: "s", allele2: "s", dominance: "recessive", expression: "Gold/red based plumage" },
+      { gene: "R", allele1: "r", allele2: "r", dominance: "recessive", expression: "Single comb" },
+      { gene: "Y", allele1: "Y", allele2: "Y", dominance: "dominant", expression: "Yellow skin" }
+    ],
+    pricing: {
+      dayOldChickMin: 4,
+      dayOldChickMax: 6,
+      startedPulletMin: 25,
+      startedPulletMax: 35,
+      breedingQualityMin: 40,
+      breedingQualityMax: 60,
+      showQualityMin: 70,
+      showQualityMax: 140,
+      rarityPremium: 1.2
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/04/New-Hampshire-Red-cut-out.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "cochin",
+    name: "Cochin",
+    category: "ornamental",
+    origin: "China",
+    description: "Massive ornamental breed with heavily feathered feet and docile temperament. Excellent broody mothers despite small egg production.",
+    conservationStatus: "uncommon",
+    physicalTraits: {
+      featherColor: "Multiple varieties (Buff, Black, Blue, White, Partridge)",
+      combType: "single",
+      bodySize: "giant",
+      legColor: "Yellow",
+      skinColor: "Yellow",
+      eggColor: "Small tinted",
+      pattern: "Variable"
+    },
+    productionTraits: {
+      eggProductionMin: 150,
+      eggProductionMax: 200,
+      eggSizeOz: 1.8,
+      meatWeight: 10,
+      feedConversion: 3.2,
+      broodiness: "very high",
+      maturityWeeks: 28
+    },
+    behaviorTraits: {
+      temperament: "docile",
+      coldHardiness: 3,
+      heatTolerance: 2,
+      foraging: "poor",
+      confinementTolerance: "excellent",
+      diseaseResistance: 2
+    },
+    geneticTraits: [
+      { gene: "Pti", allele1: "pti", allele2: "pti", dominance: "recessive", expression: "Feathered shanks and toes" },
+      { gene: "R", allele1: "r", allele2: "r", dominance: "recessive", expression: "Single comb" },
+      { gene: "Co", allele1: "Co", allele2: "Co", dominance: "dominant", expression: "Buff/columbian restriction" }
+    ],
+    pricing: {
+      dayOldChickMin: 6,
+      dayOldChickMax: 10,
+      startedPulletMin: 35,
+      startedPulletMax: 50,
+      breedingQualityMin: 60,
+      breedingQualityMax: 90,
+      showQualityMin: 100,
+      showQualityMax: 250,
+      rarityPremium: 1.5
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/03/Cochin-cut-out.jpg",
+    isExotic: false
+  },
+
+  {
+    id: "ixworth",
+    name: "Ixworth",
+    category: "dual",
+    origin: "Ixworth, Suffolk, UK",
+    description: "White table bird breed created by Reginald Appleyard in 1932. Alert, active dual-purpose breed becoming popular with smallholders.",
+    conservationStatus: "rare",
+    physicalTraits: {
+      featherColor: "Pure white",
+      combType: "single",
+      bodySize: "large",
+      legColor: "Yellow",
+      skinColor: "White",
+      eggColor: "Tinted",
+      pattern: "Solid"
+    },
+    productionTraits: {
+      eggProductionMin: 160,
+      eggProductionMax: 200,
+      eggSizeOz: 2.1,
+      meatWeight: 9,
+      feedConversion: 2.5,
+      broodiness: "moderate",
+      maturityWeeks: 20
+    },
+    behaviorTraits: {
+      temperament: "alert",
+      coldHardiness: 4,
+      heatTolerance: 3,
+      foraging: "good",
+      confinementTolerance: "good",
+      diseaseResistance: 3
+    },
+    geneticTraits: [
+      { gene: "C", allele1: "c", allele2: "c", dominance: "recessive", expression: "White plumage" },
+      { gene: "Y", allele1: "y", allele2: "y", dominance: "recessive", expression: "White skin" },
+      { gene: "R", allele1: "r", allele2: "r", dominance: "recessive", expression: "Single comb" }
+    ],
+    pricing: {
+      dayOldChickMin: 8,
+      dayOldChickMax: 12,
+      startedPulletMin: 40,
+      startedPulletMax: 60,
+      breedingQualityMin: 70,
+      breedingQualityMax: 100,
+      showQualityMin: 120,
+      showQualityMax: 200,
+      rarityPremium: 2.0
+    },
+    imageUrl: "https://poultrykeeper.com/wp-content/uploads/2015/03/Ixworth-cut-out.jpg",
+    isExotic: false
+  },
   {
     id: "australorp",
     name: "Australorp",
