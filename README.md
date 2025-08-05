@@ -17,4 +17,43 @@ Built with Express, Vite, and React.
 ---
 
 ## 📁 Project Structure
+├── client/ # React frontend
+│ └── public/images/ # Static images served by Express
+├── server/ # Express backend
+│ ├── index.ts # Main server file
+│ └── routes/ # API routes
+├── package.json
+└── README.md
 
+---
+
+## 🛠️ Getting Started
+
+### 1. Install dependencies
+
+```bash
+npm install
+2. Run the development server
+
+npm run dev
+3. API Endpoints
+Endpoint	Method	Description
+/api/crosses/calculate	POST	Predicts hybrid traits and production
+/api/generate-pdf	GET	Downloads a sample PDF report
+/api/convert-json-to-csv	POST	Converts JSON data to downloadable CSV
+
+🧪 Sample JSON POST (for /api/crosses/calculate)
+
+{
+  "parentAId": "sebright",
+  "parentBId": "buff-brahma"
+}
+📦 Technologies Used
+Backend: Node.js, Express, TypeScript
+
+Frontend: React, Vite, Tailwind CSS
+
+PDF/CSV: pdfkit, json2csv
+
+📃 License
+MIT — feel free to fork and customize.
