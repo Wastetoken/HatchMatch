@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { GeneticsCalculator } from "./services/genetics";
 import { crossCalculationRequestSchema, type CrossCalculationResponse } from "@shared/schema";
 import { z } from "zod";
+import path from "path";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   const geneticsCalculator = new GeneticsCalculator();
@@ -25,7 +26,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (!query) {
         return res.status(400).json({ error: "Search query is required" });
       }
-      
+
       const breeds = await storage.searchBreeds(query);
       res.json(breeds);
     } catch (error) {
@@ -49,11 +50,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { id } = req.params;
       const breed = await storage.getBreedById(id);
-      
+
       if (!breed) {
         return res.status(404).json({ error: "Breed not found" });
       }
-      
+
       res.json(breed);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch breed" });
@@ -68,7 +69,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       // Check if prediction already exists
       let prediction = await storage.getCrossPrediction(parentAId, parentBId);
-      
+
       if (!prediction) {
         // Get parent breeds
         const parentA = await storage.getBreedById(parentAId);
@@ -168,7 +169,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           details: error.errors 
         });
       }
-      
+
       console.error("Cross calculation error:", error);
       res.status(500).json({ 
         success: false, 
@@ -189,21 +190,59 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Placeholder for breed images (in a real app, you'd serve actual images)
-  app.get("/api/breeds/:breedId/image", async (req, res) => {
-    // Return a placeholder SVG
-    const svg = `
-      <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-        <rect width="200" height="200" fill="#f0f0f0"/>
-        <text x="100" y="100" text-anchor="middle" dominant-baseline="middle" 
-              font-family="Arial" font-size="14" fill="#666">
-          ${req.params.breedId}
-        </text>
-      </svg>
-    `;
-    
-    res.setHeader('Content-Type', 'image/svg+xml');
-    res.send(svg);
+  // Serve breed images
+  app.get("/api/breeds/:id/image", async (req, res) => {
+    const breed = await storage.getBreedById(req.params.id);
+    if (!breed) {
+      return res.status(404).json({ error: "Breed not found" });
+    }
+
+    // Map breed IDs to image paths in public directory
+    const breedImageMap: Record<string, string> = {
+      'ancona': 'ancona-chickens/ancona-chickens-3.jpg',
+      'ameraucana': 'araucana-chickens/araucana-chickens-3.jpg',
+      'easter-egger': 'araucana-chickens/araucana-chickens-4.jpg',
+      'asil': 'asil-chickens/asil-chickens-3.jpg',
+      'wyandotte': 'wyandotte-chickens/wyandotte-chickens-3.jpg',
+      'barred-plymouth-rock': 'wyandotte-chickens/wyandotte-chickens-3.jpg',
+      'plymouth-rock': 'wyandotte-chickens/wyandotte-chickens-3.jpg',
+      'cochin': 'cochin-chickens/cochin-chickens-3.jpg',
+      'buff-brahma': 'cochin-chickens/cochin-chickens-3.jpg',
+      'brahma': 'cochin-chickens/cochin-chickens-3.jpg',
+      'croad-langshan': 'croad-langshan-chickens/croad-langshan-chickens-3.jpg',
+      'faverolles': 'faverolles-chickens/faverolles-chickens-3.jpg',
+      'indian-game': 'indian-game/indian-game-3.jpg',
+      'la-fleche': 'la-fleche-chickens/la-fleche-chickens-3.jpg',
+      'leghorn': 'leghorn-chickens/leghorn-chickens-3.jpg',
+      'white-leghorn': 'leghorn-chickens/leghorn-chickens-4.jpg',
+      'marans': 'marans-chickens/marans-chickens-3.jpg',
+      'black-copper-marans': 'marans-chickens/marans-chickens-3.jpg',
+      'norfolk-grey': 'norfolk-grey-chickens/norfolk-grey-chickens-3.jpg',
+      'orpington': 'orpington-chickens/orpington-chickens-3.jpg',
+      'buff-orpington': 'orpington-chickens/orpington-chickens-3.jpg',
+      'polish': 'poland-chickens/poland-chickens-3.jpg',
+      'rhode-island-red': 'rhode-island-red-chickens/rhode-island-red-chickens-3.jpg',
+      'sebright': 'sebright-bantams/sebright-bantams-3.png',
+      'silkie': 'silkie-chickens/silkie-chickens-3.jpg',
+      'sussex': 'sussex-chickens/sussex-chickens-3.jpg',
+      'australorp': 'rhode-island-red-chickens/rhode-island-red-chickens-3.jpg',
+      'minorca': 'leghorn-chickens/leghorn-chickens-3.jpg',
+      'dorking': 'sussex-chickens/sussex-chickens-3.jpg',
+      'new-hampshire-red': 'rhode-island-red-chickens/rhode-island-red-chickens-3.jpg',
+      'welsummer': 'marans-chickens/marans-chickens-3.jpg',
+      'ixworth': 'sussex-chickens/sussex-chickens-3.jpg',
+      'ayam-cemani': 'silkie-chickens/silkie-chickens-3.jpg',
+      'sultan': 'silkie-chickens/silkie-chickens-3.jpg'
+    };
+
+    const imagePath = breedImageMap[req.params.id] || 'hybrid/hybrid-3.jpg';
+    const fullPath = path.join(__dirname, '../client/public/images', imagePath);
+
+    res.sendFile(fullPath, (err) => {
+      if (err) {
+        res.status(404).json({ error: "Image not found" });
+      }
+    });
   });
 
   const httpServer = createServer(app);

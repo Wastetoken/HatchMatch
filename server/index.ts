@@ -1,6 +1,8 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
+import { setupVite, serveStatic } from "./vite";
+import { createServer } from "http";
+import path from "path";
 
 const app = express();
 app.use(express.json());
@@ -37,6 +39,12 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  // Important: this must come before the app.use('*') handler
+  app.use(express.static("dist"));
+
+  // Serve images from client/public/images
+  app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
+
   const server = await registerRoutes(app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {

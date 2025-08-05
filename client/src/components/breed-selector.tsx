@@ -14,6 +14,48 @@ interface BreedSelectorProps {
   excludeBreedId?: string;
 }
 
+// Helper function to map breed names to image paths
+const getBreedImagePath = (breed: Breed): string => {
+  const breedImageMap: Record<string, string> = {
+    'ancona': '/images/ancona-chickens/ancona-chickens-3.jpg',
+    'ameraucana': '/images/araucana-chickens/araucana-chickens-3.jpg',
+    'easter-egger': '/images/araucana-chickens/araucana-chickens-4.jpg',
+    'asil': '/images/asil-chickens/asil-chickens-3.jpg',
+    'wyandotte': '/images/wyandotte-chickens/wyandotte-chickens-3.jpg',
+    'barred-plymouth-rock': '/images/wyandotte-chickens/wyandotte-chickens-3.jpg',
+    'plymouth-rock': '/images/wyandotte-chickens/wyandotte-chickens-3.jpg',
+    'cochin': '/images/cochin-chickens/cochin-chickens-3.jpg',
+    'buff-brahma': '/images/cochin-chickens/cochin-chickens-3.jpg',
+    'brahma': '/images/cochin-chickens/cochin-chickens-3.jpg',
+    'croad-langshan': '/images/croad-langshan-chickens/croad-langshan-chickens-3.jpg',
+    'faverolles': '/images/faverolles-chickens/faverolles-chickens-3.jpg',
+    'indian-game': '/images/indian-game/indian-game-3.jpg',
+    'la-fleche': '/images/la-fleche-chickens/la-fleche-chickens-3.jpg',
+    'leghorn': '/images/leghorn-chickens/leghorn-chickens-3.jpg',
+    'white-leghorn': '/images/leghorn-chickens/leghorn-chickens-4.jpg',
+    'marans': '/images/marans-chickens/marans-chickens-3.jpg',
+    'black-copper-marans': '/images/marans-chickens/marans-chickens-3.jpg',
+    'norfolk-grey': '/images/norfolk-grey-chickens/norfolk-grey-chickens-3.jpg',
+    'orpington': '/images/orpington-chickens/orpington-chickens-3.jpg',
+    'buff-orpington': '/images/orpington-chickens/orpington-chickens-3.jpg',
+    'polish': '/images/poland-chickens/poland-chickens-3.jpg',
+    'rhode-island-red': '/images/rhode-island-red-chickens/rhode-island-red-chickens-3.jpg',
+    'sebright': '/images/sebright-bantams/sebright-bantams-3.png',
+    'silkie': '/images/silkie-chickens/silkie-chickens-3.jpg',
+    'sussex': '/images/sussex-chickens/sussex-chickens-3.jpg',
+    'australorp': '/images/rhode-island-red-chickens/rhode-island-red-chickens-3.jpg',
+    'minorca': '/images/leghorn-chickens/leghorn-chickens-3.jpg',
+    'dorking': '/images/sussex-chickens/sussex-chickens-3.jpg',
+    'new-hampshire-red': '/images/rhode-island-red-chickens/rhode-island-red-chickens-3.jpg',
+    'welsummer': '/images/marans-chickens/marans-chickens-3.jpg',
+    'ixworth': '/images/sussex-chickens/sussex-chickens-3.jpg',
+    'ayam-cemani': '/images/silkie-chickens/silkie-chickens-3.jpg',
+    'sultan': '/images/silkie-chickens/silkie-chickens-3.jpg'
+  };
+
+  return breedImageMap[breed.id] || '/images/hybrid/hybrid-3.jpg';
+};
+
 export default function BreedSelector({ 
   label, 
   selectedBreed, 
@@ -114,7 +156,7 @@ export default function BreedSelector({
             <div className="flex items-start space-x-4">
               <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center">
                 <img 
-                  src={`/api/breeds/${selectedBreed.id}/image`}
+                  src={getBreedImagePath(selectedBreed)}
                   alt={selectedBreed.name}
                   className="w-full h-full object-cover rounded-lg"
                   onError={(e) => {
