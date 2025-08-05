@@ -85,7 +85,7 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <Layers className="w-8 h-8" />
-              <h1 className="text-2xl font-bold">Chicken Breed Cross Predictor</h1>
+              <h1 className="text-2xl font-bold">HatchMatch</h1>
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-sm opacity-90">Professional Poultry Genetics Tool</span>
@@ -212,7 +212,7 @@ export default function Home() {
               </div>
             </div>
             <div className="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-400">
-              <p>&copy; 2024 Professional Poultry Genetics Tool. Educational use only.</p>
+              <p>&copy; 2024 HatchMatch. Educational use only.</p>
             </div>
           </div>
         </footer>

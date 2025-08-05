@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicken Breed Cross Predictor - Professional Poultry Genetics Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2D5016',
+                        secondary: '#8B4513',
+                        accent: '#FF6B35',
+                        success: '#28A745',
+                        danger: '#DC3545',
+                        neutral: '#F8F9FA'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="bg-neutral font-inter">
+
+    <!-- @COMPONENT: Header -->
+    <header class="bg-primary text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i data-feather="layers" class="w-8 h-8"></i>
+                    <h1 class="text-2xl font-bold">Chicken Breed Cross Predictor</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm opacity-90">Professional Poultry Genetics Tool</span>
+                    <button class="bg-accent px-4 py-2 rounded-lg font-medium hover:bg-orange-600 transition-colors">
+                        Export Results
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <div class="container mx-auto px-6 py-8">
+        
+        <!-- @COMPONENT: BreedSelection -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
+                <i data-feather="search" class="w-6 h-6 mr-3 text-primary"></i>
+                Select Parent Breeds
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Parent A Selection -->
+                <div class="space-y-4">
+                    <label class="block text-lg font-medium text-gray-700">Parent A (Rooster)</label>
+                    <div class="relative">
+                        <select data-bind="parentA.breed" class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none bg-white">
+                            <option value="">Select Rooster Breed...</option>
+                            <optgroup label="High-Production Layers">
+                                <option value="australorp">Australorp - 250+ eggs/year, $25-50</option>
+                                <option value="leghorn">Leghorn - 280-320 eggs/year, $20-40</option>
+                                <option value="rhode-island-red">Rhode Island Red - 250-300 eggs/year, $25-45</option>
+                            </optgroup>
+                            <optgroup label="Dual-Purpose Breeds">
+                                <option value="plymouth-rock">Plymouth Rock (Barred) - 200-280 eggs/year, $30-55</option>
+                                <option value="wyandotte">Wyandotte - 180-260 eggs/year, $35-60</option>
+                                <option value="orpington">Orpington - 175-200 eggs/year, $40-70</option>
+                            </optgroup>
+                            <optgroup label="Specialty Egg Colors">
+                                <option value="ameraucana">Ameraucana - Blue/green eggs, $45-85</option>
+                                <option value="easter-egger">Easter Egger - Varied colors, $25-45</option>
+                                <option value="marans">Marans - Dark brown eggs, $50-90</option>
+                            </optgroup>
+                            <optgroup label="Cold-Hardy Breeds">
+                                <option value="brahma">Brahma - 150-200 eggs/year, $50-100</option>
+                                <option value="chantecler">Chantecler - 180-200 eggs/year, $60-120</option>
+                            </optgroup>
+                            <optgroup label="Heat-Tolerant Breeds">
+                                <option value="ancona">Ancona - 180-220 eggs/year, $40-70</option>
+                                <option value="minorca">Minorca - 180-200 eggs/year, $45-80</option>
+                                <option value="sumatra">Sumatra - Poor layer (ornamental), $80-150</option>
+                            </optgroup>
+                            <optgroup label="Exotic/Rare Breeds">
+                                <option value="ayam-cemani">Ayam Cemani - $1,200-3,000 (Most Expensive)</option>
+                                <option value="dong-tao">Dong Tao - $2,000+ (Dragon Chicken)</option>
+                                <option value="sultan">Sultan - $15-50 chicks, $100-300 adults</option>
+                                <option value="polish">Polish - $8-25 chicks, $50-150 adults</option>
+                                <option value="silkie">Silkie - 80-120 eggs/year, $20-60</option>
+                            </optgroup>
+                        </select>
+                        <i data-feather="chevron-down" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+                    </div>
+                    
+                    <!-- Parent A Preview Card -->
+                    <div id="parentAPreview" class="bg-gray-50 rounded-lg p-4 border-2 border-dashed border-gray-300 hidden">
+                        <div class="flex items-center space-x-4">
+                            <!-- Placeholder for breed image -->
+                            <div class="w-16 h-16 bg-gray-300 rounded-lg flex items-center justify-center">
+                                <i data-feather="image" class="w-8 h-8 text-gray-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800" data-bind="parentA.name">Breed Name</h4>
+                                <p class="text-sm text-gray-600" data-bind="parentA.characteristics">Key characteristics...</p>
+                                <p class="text-sm font-medium text-primary" data-bind="parentA.price">Price range</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parent B Selection -->
+                <div class="space-y-4">
+                    <label class="block text-lg font-medium text-gray-700">Parent B (Hen)</label>
+                    <div class="relative">
+                        <select data-bind="parentB.breed" class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none bg-white">
+                            <option value="">Select Hen Breed...</option>
+                            <optgroup label="High-Production Layers">
+                                <option value="australorp">Australorp - 250+ eggs/year, $25-50</option>
+                                <option value="leghorn">Leghorn - 280-320 eggs/year, $20-40</option>
+                                <option value="rhode-island-red">Rhode Island Red - 250-300 eggs/year, $25-45</option>
+                            </optgroup>
+                            <optgroup label="Dual-Purpose Breeds">
+                                <option value="plymouth-rock">Plymouth Rock (Barred) - 200-280 eggs/year, $30-55</option>
+                                <option value="wyandotte">Wyandotte - 180-260 eggs/year, $35-60</option>
+                                <option value="orpington">Orpington - 175-200 eggs/year, $40-70</option>
+                            </optgroup>
+                            <optgroup label="Specialty Egg Colors">
+                                <option value="ameraucana">Ameraucana - Blue/green eggs, $45-85</option>
+                                <option value="easter-egger">Easter Egger - Varied colors, $25-45</option>
+                                <option value="marans">Marans - Dark brown eggs, $50-90</option>
+                            </optgroup>
+                            <optgroup label="Cold-Hardy Breeds">
+                                <option value="brahma">Brahma - 150-200 eggs/year, $50-100</option>
+                                <option value="chantecler">Chantecler - 180-200 eggs/year, $60-120</option>
+                            </optgroup>
+                            <optgroup label="Heat-Tolerant Breeds">
+                                <option value="ancona">Ancona - 180-220 eggs/year, $40-70</option>
+                                <option value="minorca">Minorca - 180-200 eggs/year, $45-80</option>
+                                <option value="sumatra">Sumatra - Poor layer (ornamental), $80-150</option>
+                            </optgroup>
+                            <optgroup label="Exotic/Rare Breeds">
+                                <option value="ayam-cemani">Ayam Cemani - $1,200-3,000 (Most Expensive)</option>
+                                <option value="dong-tao">Dong Tao - $2,000+ (Dragon Chicken)</option>
+                                <option value="sultan">Sultan - $15-50 chicks, $100-300 adults</option>
+                                <option value="polish">Polish - $8-25 chicks, $50-150 adults</option>
+                                <option value="silkie">Silkie - 80-120 eggs/year, $20-60</option>
+                            </optgroup>
+                        </select>
+                        <i data-feather="chevron-down" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+                    </div>
+                    
+                    <!-- Parent B Preview Card -->
+                    <div id="parentBPreview" class="bg-gray-50 rounded-lg p-4 border-2 border-dashed border-gray-300 hidden">
+                        <div class="flex items-center space-x-4">
+                            <!-- Placeholder for breed image -->
+                            <div class="w-16 h-16 bg-gray-300 rounded-lg flex items-center justify-center">
+                                <i data-feather="image" class="w-8 h-8 text-gray-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800" data-bind="parentB.name">Breed Name</h4>
+                                <p class="text-sm text-gray-600" data-bind="parentB.characteristics">Key characteristics...</p>
+                                <p class="text-sm font-medium text-primary" data-bind="parentB.price">Price range</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <button data-event="click:calculateCross" class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-800 transition-colors flex items-center mx-auto">
+                    <i data-feather="zap" class="w-5 h-5 mr-2"></i>
+                    Calculate Cross Prediction
+                </button>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: BreedSelection -->
+
+        <!-- @COMPONENT: ResultsTabs -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <!-- Tab Navigation -->
+            <div class="border-b border-gray-200">
+                <nav class="flex space-x-8 px-6">
+                    <button class="py-4 px-2 border-b-2 border-primary text-primary font-medium" data-tab="visual">
+                        Visual Prediction
+                    </button>
+                    <button class="py-4 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium" data-tab="genetics">
+                        Genetics Breakdown
+                    </button>
+                    <button class="py-4 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium" data-tab="traits">
+                        Trait Analysis
+                    </button>
+                    <button class="py-4 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium" data-tab="pricing">
+                        Pricing Data
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="p-6">
+                
+                <!-- Visual Prediction Tab -->
+                <div id="visualTab" class="tab-content">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Predicted Offspring Appearance</h3>
+                    
+                    <div class="grid lg:grid-cols-3 gap-8">
+                        <!-- Parent A Visual -->
+                        <div class="text-center">
+                            <h4 class="font-medium text-gray-700 mb-4">Parent A (Rooster)</h4>
+                            <!-- Black Australorp example -->
+                            <div class="w-full h-48 bg-gradient-to-b from-gray-100 to-gray-200 rounded-lg mb-4 flex items-center justify-center border-2 border-gray-300">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-black rounded-full mx-auto mb-2 border-2 border-gray-400"></div>
+                                    <p class="text-sm font-medium text-gray-600">Australorp</p>
+                                    <p class="text-xs text-gray-500">Black with green sheen</p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded-lg text-sm">
+                                <p><strong>Comb:</strong> Single</p>
+                                <p><strong>Size:</strong> 6-8 lbs</p>
+                                <p><strong>Color:</strong> Jet Black</p>
+                            </div>
+                        </div>
+
+                        <!-- Offspring Prediction -->
+                        <div class="text-center">
+                            <h4 class="font-medium text-gray-700 mb-4">Predicted Offspring</h4>
+                            <div class="w-full h-48 bg-gradient-to-b from-yellow-50 to-yellow-100 rounded-lg mb-4 flex items-center justify-center border-2 border-accent">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-gray-800 to-yellow-600 rounded-full mx-auto mb-2 border-2 border-accent"></div>
+                                    <p class="text-sm font-medium text-gray-700">F1 Cross</p>
+                                    <p class="text-xs text-gray-600">Dark with buff/gold highlights</p>
+                                </div>
+                            </div>
+                            <div class="bg-accent/10 p-3 rounded-lg text-sm">
+                                <p><strong>Likelihood:</strong> 75% chance</p>
+                                <p><strong>Size:</strong> 6-7 lbs</p>
+                                <p><strong>Hybrid Vigor:</strong> Expected</p>
+                            </div>
+                        </div>
+
+                        <!-- Parent B Visual -->
+                        <div class="text-center">
+                            <h4 class="font-medium text-gray-700 mb-4">Parent B (Hen)</h4>
+                            <!-- Buff Orpington example -->
+                            <div class="w-full h-48 bg-gradient-to-b from-gray-100 to-gray-200 rounded-lg mb-4 flex items-center justify-center border-2 border-gray-300">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-yellow-400 rounded-full mx-auto mb-2 border-2 border-gray-400"></div>
+                                    <p class="text-sm font-medium text-gray-600">Buff Orpington</p>
+                                    <p class="text-xs text-gray-500">Golden buff color</p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded-lg text-sm">
+                                <p><strong>Comb:</strong> Single</p>
+                                <p><strong>Size:</strong> 7-10 lbs</p>
+                                <p><strong>Color:</strong> Buff/Gold</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Appearance Prediction -->
+                    <div class="mt-8 bg-gray-50 rounded-lg p-6">
+                        <h4 class="font-semibold text-gray-800 mb-4">Detailed Appearance Breakdown</h4>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-medium text-gray-700 mb-3">Physical Characteristics</h5>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex justify-between">
+                                        <span>Feather Pattern:</span>
+                                        <span class="font-medium">Solid (75%) / Barred (25%)</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Comb Type:</span>
+                                        <span class="font-medium">Single (100%)</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Leg Color:</span>
+                                        <span class="font-medium">Yellow (85%) / Dark (15%)</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Skin Color:</span>
+                                        <span class="font-medium">Yellow (dominant)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="font-medium text-gray-700 mb-3">Size & Production</h5>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex justify-between">
+                                        <span>Adult Weight:</span>
+                                        <span class="font-medium">6-7 lbs (intermediate)</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Egg Production:</span>
+                                        <span class="font-medium">220-250 eggs/year</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Egg Color:</span>
+                                        <span class="font-medium">Light to medium brown</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Growth Rate:</span>
+                                        <span class="font-medium">Enhanced (hybrid vigor)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Genetics Breakdown Tab -->
+                <div id="geneticsTab" class="tab-content hidden">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Genetic Analysis & Inheritance Patterns</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Punnett Square Visualization -->
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                <i data-feather="grid" class="w-5 h-5 mr-2 text-primary"></i>
+                                Key Genetic Crosses
+                            </h4>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <!-- Feather Color Genetics -->
+                                <div>
+                                    <h5 class="font-medium text-gray-700 mb-3">Feather Color (E-locus)</h5>
+                                    <div class="bg-white rounded border p-4">
+                                        <div class="grid grid-cols-3 gap-2 text-center text-sm">
+                                            <div class="bg-gray-100 p-2 rounded">
+                                                <strong>×</strong>
+                                            </div>
+                                            <div class="bg-success/20 p-2 rounded">
+                                                <strong>E (Black)</strong>
+                                                <div class="text-xs text-success">Dominant</div>
+                                            </div>
+                                            <div class="bg-success/20 p-2 rounded">
+                                                <strong>E (Black)</strong>
+                                                <div class="text-xs text-success">Dominant</div>
+                                            </div>
+                                            <div class="bg-danger/20 p-2 rounded">
+                                                <strong>e+ (Buff)</strong>
+                                                <div class="text-xs text-danger">Recessive</div>
+                                            </div>
+                                            <div class="bg-yellow-100 p-2 rounded">
+                                                <strong>Ee+</strong>
+                                                <div class="text-xs">Black expression</div>
+                                            </div>
+                                            <div class="bg-yellow-100 p-2 rounded">
+                                                <strong>Ee+</strong>
+                                                <div class="text-xs">Black expression</div>
+                                            </div>
+                                            <div class="bg-danger/20 p-2 rounded">
+                                                <strong>e+ (Buff)</strong>
+                                                <div class="text-xs text-danger">Recessive</div>
+                                            </div>
+                                            <div class="bg-yellow-100 p-2 rounded">
+                                                <strong>Ee+</strong>
+                                                <div class="text-xs">Black expression</div>
+                                            </div>
+                                            <div class="bg-yellow-100 p-2 rounded">
+                                                <strong>Ee+</strong>
+                                                <div class="text-xs">Black expression</div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 text-sm">
+                                            <p><strong>Result:</strong> 100% black offspring (carriers of buff)</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Comb Type Genetics -->
+                                <div>
+                                    <h5 class="font-medium text-gray-700 mb-3">Comb Type</h5>
+                                    <div class="bg-white rounded border p-4">
+                                        <div class="space-y-2 text-sm">
+                                            <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                                                <span>Single × Single</span>
+                                                <span class="bg-gray-200 px-2 py-1 rounded text-xs">rr × rr</span>
+                                            </div>
+                                            <div class="flex justify-between items-center p-2 bg-success/10 rounded">
+                                                <span><strong>100% Single Comb</strong></span>
+                                                <span class="bg-success/20 px-2 py-1 rounded text-xs">All rr</span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 text-xs text-gray-600">
+                                            Both parents have recessive single comb genes
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Genetic Principles -->
+                        <div class="bg-blue-50 rounded-lg p-6">
+                            <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                <i data-feather="book" class="w-5 h-5 mr-2 text-blue-600"></i>
+                                Genetic Principles in This Cross
+                            </h4>
+                            
+                            <div class="grid md:grid-cols-3 gap-6 text-sm">
+                                <div>
+                                    <h5 class="font-medium text-gray-700 mb-2">Dominant Traits</h5>
+                                    <ul class="space-y-1 text-gray-600">
+                                        <li class="flex items-center">
+                                            <div class="w-2 h-2 bg-success rounded-full mr-2"></div>
+                                            Extended Black (E)
+                                        </li>
+                                        <li class="flex items-center">
+                                            <div class="w-2 h-2 bg-success rounded-full mr-2"></div>
+                                            Yellow skin (Y)
+                                        </li>
+                                        <li class="flex items-center">
+                                            <div class="w-2 h-2 bg-success rounded-full mr-2"></div>
+                                            Normal feathering
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-700 mb-2">Recessive Traits</h5>
+                                    <ul class="space-y-1 text-gray-600">
+                                        <li class="flex items-center">
+                                            <div class="w-2 h-2 bg-danger rounded-full mr-2"></div>
+                                            Single comb (rr)
+                                        </li>
+                                        <li class="flex items-center">
+                                            <div class="w-2 h-2 bg-danger rounded-full mr-2"></div>
+                                            Buff color (e+)
+                                        </li>
+                                        <li class="flex items-center">
+                                            <div class="w-2 h-2 bg-danger rounded-full mr-2"></div>
+                                            White skin (recessive)
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-700 mb-2">Hybrid Vigor Effects</h5>
+                                    <ul class="space-y-1 text-gray-600">
+                                        <li class="flex items-center">
+                                            <div class="w-2 h-2 bg-accent rounded-full mr-2"></div>
+                                            Faster growth rate
+                                        </li>
+                                        <li class="flex items-center">
+                                            <div class="w-2 h-2 bg-accent rounded-full mr-2"></div>
+                                            Better feed conversion
+                                        </li>
+                                        <li class="flex items-center">
+                                            <div class="w-2 h-2 bg-accent rounded-full mr-2"></div>
+                                            Enhanced disease resistance
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- F2 Generation Prediction -->
+                        <div class="bg-yellow-50 rounded-lg p-6">
+                            <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                <i data-feather="repeat" class="w-5 h-5 mr-2 text-yellow-600"></i>
+                                F2 Generation (Breeding F1 × F1)
+                            </h4>
+                            <div class="text-sm">
+                                <p class="text-gray-700 mb-3">If you breed the F1 offspring together, expect genetic segregation:</p>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded border">
+                                        <h5 class="font-medium mb-2">Color Outcomes (F2)</h5>
+                                        <ul class="space-y-1 text-gray-600">
+                                            <li>75% Black phenotype (EE, Ee+)</li>
+                                            <li>25% Buff phenotype (e+e+)</li>
+                                            <li>Only 25% true-breeding black (EE)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white p-4 rounded border">
+                                        <h5 class="font-medium mb-2">Expected Ratios</h5>
+                                        <ul class="space-y-1 text-gray-600">
+                                            <li>1 EE : 2 Ee+ : 1 e+e+</li>
+                                            <li>Classic 3:1 phenotype ratio</li>
+                                            <li>Mendelian inheritance pattern</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trait Analysis Tab -->
+                <div id="traitsTab" class="tab-content hidden">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Comprehensive Trait Analysis</h3>
+                    
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <!-- Production Traits -->
+                        <div class="space-y-6">
+                            <div class="bg-green-50 rounded-lg p-6">
+                                <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                    <i data-feather="trending-up" class="w-5 h-5 mr-2 text-green-600"></i>
+                                    Production Performance
+                                </h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="flex justify-between mb-2">
+                                            <span class="text-sm font-medium">Egg Production (Annual)</span>
+                                            <span class="text-sm text-gray-600">220-250 eggs</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-green-600 h-2 rounded-full" style="width: 75%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mt-1">Expected hybrid vigor: +15-20% over parent average</p>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex justify-between mb-2">
+                                            <span class="text-sm font-medium">Feed Conversion</span>
+                                            <span class="text-sm text-gray-600">Excellent</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-green-600 h-2 rounded-full" style="width: 85%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mt-1">Hybrid efficiency advantage expected</p>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex justify-between mb-2">
+                                            <span class="text-sm font-medium">Growth Rate</span>
+                                            <span class="text-sm text-gray-600">Enhanced</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-green-600 h-2 rounded-full" style="width: 80%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mt-1">Faster than either parent breed</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-blue-50 rounded-lg p-6">
+                                <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                    <i data-feather="thermometer" class="w-5 h-5 mr-2 text-blue-600"></i>
+                                    Climate Adaptability
+                                </h4>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">Cold Hardiness</span>
+                                        <div class="flex space-x-1">
+                                            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">Heat Tolerance</span>
+                                        <div class="flex space-x-1">
+                                            <div class="w-3 h-3 bg-orange-500 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-orange-500 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-orange-500 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">Humidity Tolerance</span>
+                                        <div class="flex space-x-1">
+                                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-2">Best suited for moderate to cool climates with good winter laying.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Behavioral & Health Traits -->
+                        <div class="space-y-6">
+                            <div class="bg-purple-50 rounded-lg p-6">
+                                <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                    <i data-feather="heart" class="w-5 h-5 mr-2 text-purple-600"></i>
+                                    Temperament & Behavior
+                                </h4>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">Docility</span>
+                                        <span class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">High</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">Foraging Ability</span>
+                                        <span class="text-sm bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Moderate</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">Broodiness</span>
+                                        <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">Low-Moderate</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">Confinement Tolerance</span>
+                                        <span class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">Excellent</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-2">Ideal for family farms and backyard settings. Good with children.</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-orange-50 rounded-lg p-6">
+                                <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                    <i data-feather="shield" class="w-5 h-5 mr-2 text-orange-600"></i>
+                                    Health & Disease Resistance
+                                </h4>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">Overall Hardiness</span>
+                                        <span class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">Excellent</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">Disease Resistance</span>
+                                        <span class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">Enhanced</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">Respiratory Health</span>
+                                        <span class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">Strong</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">Parasite Resistance</span>
+                                        <span class="text-sm bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Moderate</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-2">Hybrid vigor provides enhanced immune system and overall health.</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-lg p-6">
+                                <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                    <i data-feather="calendar" class="w-5 h-5 mr-2 text-gray-600"></i>
+                                    Timeline & Milestones
+                                </h4>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex justify-between">
+                                        <span>First Egg:</span>
+                                        <span class="font-medium">18-20 weeks</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Peak Production:</span>
+                                        <span class="font-medium">24-28 weeks</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Adult Weight:</span>
+                                        <span class="font-medium">16-20 weeks</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Processing Weight:</span>
+                                        <span class="font-medium">10-12 weeks</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Data Tab -->
+                <div id="pricingTab" class="tab-content hidden">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Market Pricing & Economic Analysis</h3>
+                    
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <!-- Current Market Prices -->
+                        <div class="space-y-6">
+                            <div class="bg-green-50 rounded-lg p-6">
+                                <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                    <i data-feather="dollar-sign" class="w-5 h-5 mr-2 text-green-600"></i>
+                                    Parent Breed Pricing (2024)
+                                </h4>
+                                <div class="space-y-4">
+                                    <div class="bg-white rounded-lg p-4 border border-green-200">
+                                        <h5 class="font-medium text-gray-800 mb-2">Australorp (Parent A)</h5>
+                                        <div class="grid grid-cols-2 gap-4 text-sm">
+                                            <div>
+                                                <p class="text-gray-600">Day-old chicks:</p>
+                                                <p class="font-semibold text-green-700">$3-5 each</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-gray-600">Started pullets:</p>
+                                                <p class="font-semibold text-green-700">$25-35 each</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-gray-600">Breeding quality:</p>
+                                                <p class="font-semibold text-green-700">$40-60 each</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-gray-600">Show quality:</p>
+                                                <p class="font-semibold text-green-700">$75-150 each</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-white rounded-lg p-4 border border-green-200">
+                                        <h5 class="font-medium text-gray-800 mb-2">Buff Orpington (Parent B)</h5>
+                                        <div class="grid grid-cols-2 gap-4 text-sm">
+                                            <div>
+                                                <p class="text-gray-600">Day-old chicks:</p>
+                                                <p class="font-semibold text-green-700">$4-6 each</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-gray-600">Started pullets:</p>
+                                                <p class="font-semibold text-green-700">$35-45 each</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-gray-600">Breeding quality:</p>
+                                                <p class="font-semibold text-green-700">$50-80 each</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-gray-600">Show quality:</p>
+                                                <p class="font-semibold text-green-700">$100-200 each</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-blue-50 rounded-lg p-6">
+                                <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                    <i data-feather="trending-up" class="w-5 h-5 mr-2 text-blue-600"></i>
+                                    Market Trends & Factors
+                                </h4>
+                                <div class="space-y-3 text-sm">
+                                    <div class="flex justify-between items-center">
+                                        <span>Spring Premium (Mar-May):</span>
+                                        <span class="font-medium text-blue-700">+15-25%</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Fall Discount (Sep-Nov):</span>
+                                        <span class="font-medium text-green-700">-10-20%</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Shipping Costs:</span>
+                                        <span class="font-medium">$25-45 per order</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Minimum Orders:</span>
+                                        <span class="font-medium">6-25 chicks</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 p-3 bg-white rounded border-l-4 border-blue-400">
+                                    <p class="text-xs text-gray-600">
+                                        <strong>Note:</strong> Prices vary significantly by hatchery reputation, vaccination status, and regional availability. Premium bloodlines command 200-500% markup.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cross Value Analysis -->
+                        <div class="space-y-6">
+                            <div class="bg-accent/10 rounded-lg p-6">
+                                <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                    <i data-feather="target" class="w-5 h-5 mr-2 text-accent"></i>
+                                    Predicted Cross Value
+                                </h4>
+                                <div class="space-y-4">
+                                    <div class="bg-white rounded-lg p-4 border border-orange-200">
+                                        <h5 class="font-medium text-gray-800 mb-2">F1 Cross Pricing Estimate</h5>
+                                        <div class="grid grid-cols-2 gap-4 text-sm">
+                                            <div>
+                                                <p class="text-gray-600">Day-old chicks:</p>
+                                                <p class="font-semibold text-accent">$2-4 each</p>
+                                                <p class="text-xs text-gray-500">Lower due to hybrid status</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-gray-600">Started pullets:</p>
+                                                <p class="font-semibold text-accent">$20-30 each</p>
+                                                <p class="text-xs text-gray-500">Production value</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-gray-600">Production birds:</p>
+                                                <p class="font-semibold text-accent">$25-40 each</p>
+                                                <p class="text-xs text-gray-500">High egg production</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-gray-600">Meat birds:</p>
+                                                <p class="font-semibold text-accent">$15-25 each</p>
+                                                <p class="text-xs text-gray-500">Processing weight</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-yellow-50 rounded border-l-4 border-yellow-400 p-4">
+                                        <h6 class="font-medium text-gray-800 mb-2">Value Proposition</h6>
+                                        <ul class="text-sm text-gray-700 space-y-1">
+                                            <li>• Enhanced egg production (+15-20%)</li>
+                                            <li>• Superior feed conversion</li>
+                                            <li>• Improved disease resistance</li>
+                                            <li>• Better climate adaptability</li>
+                                            <li>• Faster growth to market weight</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-lg p-6">
+                                <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                    <i data-feather="calculator" class="w-5 h-5 mr-2 text-gray-600"></i>
+                                    Economic Analysis
+                                </h4>
+                                <div class="space-y-4 text-sm">
+                                    <div class="bg-white rounded border p-3">
+                                        <h6 class="font-medium mb-2">Cost of Production (Per Bird)</h6>
+                                        <div class="space-y-1">
+                                            <div class="flex justify-between">
+                                                <span>Initial chick cost:</span>
+                                                <span>$3.50</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span>Feed to lay (22 weeks):</span>
+                                                <span>$12.50</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span>Healthcare & misc:</span>
+                                                <span>$2.00</span>
+                                            </div>
+                                            <div class="flex justify-between border-t pt-1 font-medium">
+                                                <span>Total cost to production:</span>
+                                                <span>$18.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-white rounded border p-3">
+                                        <h6 class="font-medium mb-2">Annual Revenue Potential</h6>
+                                        <div class="space-y-1">
+                                            <div class="flex justify-between">
+                                                <span>Eggs/year (avg 235):</span>
+                                                <span>$70.50</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span>Meat value (3.5 lbs):</span>
+                                                <span>$24.50</span>
+                                            </div>
+                                            <div class="flex justify-between border-t pt-1 font-medium text-green-700">
+                                                <span>ROI (Year 1):</span>
+                                                <span>427%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-purple-50 rounded-lg p-6">
+                                <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                    <i data-feather="shopping-cart" class="w-5 h-5 mr-2 text-purple-600"></i>
+                                    Where to Purchase
+                                </h4>
+                                <div class="space-y-3 text-sm">
+                                    <div class="bg-white rounded border p-3">
+                                        <h6 class="font-medium text-gray-800">Recommended Hatcheries</h6>
+                                        <ul class="mt-2 space-y-1 text-gray-600">
+                                            <li>• <strong>Cackle Hatchery:</strong> Wide breed selection, good pricing</li>
+                                            <li>• <strong>Murray McMurray:</strong> Quality birds, established reputation</li>
+                                            <li>• <strong>Meyer Hatchery:</strong> Specialty breeds, good health guarantee</li>
+                                            <li>• <strong>Hoover's Hatchery:</strong> Competitive pricing, quick shipping</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white rounded border p-3">
+                                        <h6 class="font-medium text-gray-800">Local Options</h6>
+                                        <ul class="mt-2 space-y-1 text-gray-600">
+                                            <li>• Farm stores (spring season)</li>
+                                            <li>• Local breeders (check poultry clubs)</li>
+                                            <li>• Auction barns (variable quality)</li>
+                                            <li>• Online marketplaces (verify seller)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- @END_COMPONENT: ResultsTabs -->
+
+        <!-- @COMPONENT: ExportFooter -->
+        <div class="mt-8 bg-primary text-white rounded-xl p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Export Your Results</h3>
+                    <p class="opacity-90">Save this genetic analysis for your breeding records</p>
+                </div>
+                <div class="flex space-x-3">
+                    <button class="bg-white text-primary px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center">
+                        <i data-feather="file-text" class="w-4 h-4 mr-2"></i>
+                        PDF Report
+                    </button>
+                    <button class="bg-secondary text-white px-4 py-2 rounded-lg font-medium hover:bg-amber-700 transition-colors flex items-center">
+                        <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                        CSV Data
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: ExportFooter -->
+
+    </div>
+
+    <!-- @COMPONENT: Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-6 py-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="font-semibold mb-4">Data Sources</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li>• Michigan State University Extension</li>
+                        <li>• Ohio State University Poultry</li>
+                        <li>• American Livestock Conservancy</li>
+                        <li>• Commercial Hatchery Data (2024)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Genetic Principles</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li>• Mendelian inheritance patterns</li>
+                        <li>• Quantitative trait analysis</li>
+                        <li>• Hybrid vigor calculations</li>
+                        <li>• Population genetics modeling</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Disclaimer</h4>
+                    <p class="text-sm text-gray-300">
+                        Predictions based on established genetic principles. Actual outcomes may vary due to environmental factors, specific bloodlines, and breeding management practices.
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-400">
+                <p>&copy; 2024 Professional Poultry Genetics Tool. Educational use only.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        // Initialize Feather icons
+        (function() {
+            feather.replace();
+        })();
+
+        // Tab switching functionality
+        (function() {
+            const tabButtons = document.querySelectorAll('[data-tab]');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetTab = this.dataset.tab;
+                    
+                    // Update button states
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('border-primary', 'text-primary');
+                        btn.classList.add('border-transparent', 'text-gray-500');
+                    });
+                    this.classList.remove('border-transparent', 'text-gray-500');
+                    this.classList.add('border-primary', 'text-primary');
+                    
+                    // Update content visibility
+                    tabContents.forEach(content => {
+                        content.classList.add('hidden');
+                    });
+                    document.getElementById(targetTab + 'Tab').classList.remove('hidden');
+                });
+            });
+        })();
+
+        // Breed selection functionality
+        (function() {
+            const breedSelects = document.querySelectorAll('select[data-bind*="parent"]');
+            
+            breedSelects.forEach(select => {
+                select.addEventListener('change', function() {
+                    const parentType = this.dataset.bind.includes('parentA') ? 'A' : 'B';
+                    const preview = document.getElementById(`parent${parentType}Preview`);
+                    
+                    if (this.value) {
+                        preview.classList.remove('hidden');
+                        // TODO: Populate preview with actual breed data
+                    } else {
+                        preview.classList.add('hidden');
+                    }
+                });
+            });
+        })();
+
+        // Calculate cross prediction functionality
+        (function() {
+            const calculateButton = document.querySelector('[data-event="click:calculateCross"]');
+            
+            if (calculateButton) {
+                calculateButton.addEventListener('click', function() {
+                    // TODO: Implement actual genetic calculation logic
+                    // This would involve:
+                    // 1. Get selected parent breeds
+                    // 2. Look up their genetic profiles
+                    // 3. Calculate offspring probabilities
+                    // 4. Update prediction displays
+                    // 5. Generate pricing estimates
+                    
+                    console.log('Calculate cross prediction triggered');
+                    
+                    // For now, show success feedback
+                    this.innerHTML = '<i data-feather="check" class="w-5 h-5 mr-2"></i>Prediction Complete';
+                    this.classList.add('bg-success');
+                    this.classList.remove('bg-primary');
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '<i data-feather="zap" class="w-5 h-5 mr-2"></i>Calculate Cross Prediction';
+                        this.classList.remove('bg-success');
+                        this.classList.add('bg-primary');
+                        feather.replace();
+                    }, 2000);
+                });
+            }
+        })();
+
+        // Export functionality
+        (function() {
+            const exportButtons = document.querySelectorAll('button[class*="Export"], button[class*="PDF"], button[class*="CSV"]');
+            
+            exportButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // TODO: Implement actual export functionality
+                    // This would generate PDF reports or CSV data files
+                    
+                    console.log('Export triggered:', this.textContent);
+                    
+                    // Show feedback
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i data-feather="check" class="w-4 h-4 mr-2"></i>Exported!';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        feather.replace();
+                    }, 2000);
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>
